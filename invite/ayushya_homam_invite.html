@@ -1,0 +1,1020 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ஆயுஷ்ய ஹோம அழைப்பிதழ்</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Noto+Serif+Tamil:wght@400;600;700&family=Cinzel:wght@400;600;700&display=swap"
+    rel="stylesheet">
+  <style>
+    :root {
+      --gold: #C8962A;
+      --deep-gold: #9B6F1A;
+      --cream: #FDF6E9;
+      --ivory: #FAF0D7;
+      --saffron: #E8821A;
+      --maroon: #6B1A1A;
+      --dark-maroon: #4A0E0E;
+      --teal: #0F5C5C;
+      --deep-teal: #0A3D3D;
+      --text-dark: #2C1810;
+      --text-medium: #4A2C1A;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: #1a0a0a;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      min-height: 100vh;
+      padding: 30px 16px;
+      font-family: 'Cormorant Garamond', serif;
+    }
+
+    .card {
+      width: 100%;
+      max-width: 780px;
+      background: var(--cream);
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 0 0 6px var(--gold), 0 0 0 10px var(--maroon), 0 20px 80px rgba(0, 0, 0, 0.6);
+      animation: fadeIn 1.2s ease forwards;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(24px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* ── Top band ── */
+    .top-band {
+      background: linear-gradient(135deg, var(--dark-maroon) 0%, var(--maroon) 50%, var(--dark-maroon) 100%);
+      padding: 18px 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      position: relative;
+    }
+
+    .top-band::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, transparent, var(--gold), var(--saffron), var(--gold), transparent);
+    }
+
+    .om-symbol {
+      font-size: 2rem;
+      color: var(--gold);
+      text-shadow: 0 0 12px rgba(200, 150, 42, 0.6);
+      animation: glow 2.4s ease-in-out infinite alternate;
+    }
+
+    @keyframes glow {
+      from {
+        text-shadow: 0 0 8px rgba(200, 150, 42, 0.4);
+      }
+
+      to {
+        text-shadow: 0 0 20px rgba(200, 150, 42, 0.9), 0 0 36px rgba(232, 130, 26, 0.4);
+      }
+    }
+
+    .blessings-line {
+      color: #f0d080;
+      font-family: 'Cinzel', serif;
+      font-size: 0.95rem;
+      letter-spacing: 0.18em;
+      text-align: center;
+      line-height: 1.5;
+    }
+
+    /* ── Decorative kolam row ── */
+    .kolam-strip {
+      background: var(--ivory);
+      padding: 8px 0 6px;
+      text-align: center;
+      font-size: 1.1rem;
+      color: var(--gold);
+      letter-spacing: 0.3em;
+      border-bottom: 1px solid rgba(200, 150, 42, 0.25);
+    }
+
+    /* ── Hero section ── */
+    .hero {
+      background: linear-gradient(180deg, var(--ivory) 0%, var(--cream) 100%);
+      padding: 36px 40px 28px;
+      text-align: center;
+      position: relative;
+    }
+
+    /* Corner lotuses */
+    .hero::before,
+    .hero::after {
+      content: '❋';
+      position: absolute;
+      top: 18px;
+      font-size: 2.2rem;
+      color: rgba(200, 150, 42, 0.18);
+    }
+
+    .hero::before {
+      left: 18px;
+    }
+
+    .hero::after {
+      right: 18px;
+    }
+
+    .event-type {
+      font-family: 'Cinzel', serif;
+      font-size: 0.9rem;
+      letter-spacing: 0.35em;
+      color: var(--teal);
+      text-transform: uppercase;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    .event-type::before,
+    .event-type::after {
+      content: '';
+      display: inline-block;
+      width: 42px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--teal));
+    }
+
+    .event-type::after {
+      background: linear-gradient(90deg, var(--teal), transparent);
+    }
+
+    .invitation-tag {
+      color: var(--maroon);
+      font-style: italic;
+      font-size: 1.25rem;
+      margin-bottom: 6px;
+      animation: slideDown 0.8s ease 0.3s both;
+    }
+
+    @keyframes slideDown {
+      from {
+        opacity: 0;
+        transform: translateY(-10px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .title-block {
+      margin: 16px 0 20px;
+    }
+
+    .title-main {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(1.6rem, 5vw, 2.6rem);
+      font-weight: 700;
+      color: var(--maroon);
+      line-height: 1.15;
+      text-shadow: 2px 2px 0 rgba(200, 150, 42, 0.12);
+      animation: slideDown 0.9s ease 0.5s both;
+    }
+
+    .title-sub {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(1.2rem, 3.5vw, 1.8rem);
+      color: var(--deep-gold);
+      font-weight: 400;
+      letter-spacing: 0.08em;
+      margin-top: 6px;
+    }
+
+    .divider {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      margin: 18px 0;
+      color: var(--gold);
+      font-size: 1rem;
+      letter-spacing: 0.2em;
+    }
+
+    .divider::before,
+    .divider::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+      max-width: 180px;
+    }
+
+    /* ── Child's name hero ── */
+    .child-name-wrap {
+      background: linear-gradient(135deg, var(--maroon) 0%, var(--dark-maroon) 100%);
+      margin: 0;
+      padding: 22px 40px;
+      position: relative;
+      overflow: hidden;
+      text-align: center;
+      animation: slideDown 1s ease 0.7s both;
+    }
+
+    .child-name-wrap::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: repeating-linear-gradient(45deg,
+          transparent,
+          transparent 12px,
+          rgba(255, 255, 255, 0.015) 12px,
+          rgba(255, 255, 255, 0.015) 24px);
+    }
+
+    .for-label {
+      font-family: 'Cinzel', serif;
+      font-size: 0.9rem;
+      letter-spacing: 0.4em;
+      color: rgba(240, 208, 128, 0.7);
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+
+    .child-name {
+      font-family: 'Noto Serif Tamil', serif;
+      font-size: clamp(1.5rem, 5vw, 2.5rem);
+      font-weight: 700;
+      color: #f5d87a;
+      text-shadow: 0 2px 12px rgba(0, 0, 0, 0.4);
+      letter-spacing: 0.04em;
+      line-height: 1.3;
+    }
+
+    .child-name-tamil {
+      font-family: 'Noto Serif Tamil', serif;
+      font-size: 1.1rem;
+      color: rgba(240, 208, 128, 0.8);
+      margin-top: 4px;
+      font-weight: 400;
+    }
+
+    /* ── Body content ── */
+    .body {
+      padding: 28px 40px;
+    }
+
+    .parents-block {
+      text-align: center;
+      margin-bottom: 24px;
+      animation: fadeUp 0.8s ease 0.9s both;
+    }
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(12px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .parents-label {
+      font-family: 'Cinzel', serif;
+      font-size: 0.9rem;
+      letter-spacing: 0.35em;
+      color: var(--teal);
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+
+    .parents-names {
+      font-size: 1.3rem;
+      color: var(--maroon);
+      font-weight: 600;
+      line-height: 1.5;
+    }
+
+    .parents-names span {
+      color: var(--deep-gold);
+    }
+
+    /* ── Info cards ── */
+    .info-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin: 24px 0;
+      animation: fadeUp 0.8s ease 1.1s both;
+    }
+
+    .info-card {
+      background: linear-gradient(135deg, var(--ivory), #f5e8c8);
+      border: 1px solid rgba(200, 150, 42, 0.3);
+      border-left: 4px solid var(--gold);
+      padding: 16px 18px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .info-card::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 40px;
+      height: 40px;
+      background: radial-gradient(circle at top right, rgba(200, 150, 42, 0.08), transparent);
+    }
+
+    .info-card .icon {
+      font-size: 1.4rem;
+      margin-bottom: 6px;
+      display: block;
+    }
+
+    .info-card .label {
+      font-family: 'Cinzel', serif;
+      font-size: 0.85rem;
+      letter-spacing: 0.3em;
+      color: var(--teal);
+      text-transform: uppercase;
+      margin-bottom: 5px;
+    }
+
+    .info-card .value {
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--text-dark);
+      line-height: 1.4;
+    }
+
+    .info-card .value-sub {
+      font-size: 1.05rem;
+      color: var(--text-medium);
+      font-style: italic;
+      margin-top: 2px;
+    }
+
+    /* ── Muhurtha highlight ── */
+    .muhurtha-box {
+      background: linear-gradient(135deg, var(--deep-teal) 0%, var(--teal) 100%);
+      padding: 20px 24px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      margin: 20px 0;
+      animation: fadeUp 0.8s ease 1.2s both;
+    }
+
+    .muhurtha-box::before {
+      content: '✦ ✦ ✦';
+      position: absolute;
+      top: 8px;
+      left: 50%;
+      transform: translateX(-50%);
+      color: rgba(255, 255, 255, 0.1);
+      font-size: 0.7rem;
+      letter-spacing: 0.5em;
+    }
+
+    .muhurtha-label {
+      font-family: 'Cinzel', serif;
+      font-size: 0.85rem;
+      letter-spacing: 0.4em;
+      color: rgba(245, 216, 122, 0.8);
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+
+    .muhurtha-time {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(1.3rem, 4vw, 1.9rem);
+      font-weight: 700;
+      color: #f5d87a;
+      letter-spacing: 0.06em;
+    }
+
+    .muhurtha-note {
+      font-size: 1.05rem;
+      color: rgba(255, 255, 255, 0.75);
+      margin-top: 4px;
+      font-style: italic;
+    }
+
+    /* ── Venue ── */
+    .venue-block {
+      border: 1px solid rgba(200, 150, 42, 0.35);
+      border-top: 4px solid var(--saffron);
+      padding: 20px 22px;
+      background: var(--ivory);
+      margin: 20px 0;
+      animation: fadeUp 0.8s ease 1.3s both;
+    }
+
+    .venue-label {
+      font-family: 'Cinzel', serif;
+      font-size: 0.85rem;
+      letter-spacing: 0.35em;
+      color: var(--saffron);
+      text-transform: uppercase;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .venue-name {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--maroon);
+      margin-bottom: 4px;
+    }
+
+    .venue-address {
+      font-size: 1.05rem;
+      color: var(--text-medium);
+      line-height: 1.6;
+      font-style: italic;
+    }
+
+    /* ── Blessings / Note ── */
+    .note-block {
+      text-align: center;
+      padding: 18px 20px;
+      background: linear-gradient(135deg, rgba(107, 26, 26, 0.04), rgba(200, 150, 42, 0.06));
+      border: 1px dashed rgba(200, 150, 42, 0.3);
+      margin: 20px 0;
+      animation: fadeUp 0.8s ease 1.4s both;
+    }
+
+    .note-text {
+      font-size: 1.15rem;
+      color: var(--text-medium);
+      line-height: 1.75;
+      font-style: italic;
+    }
+
+    .note-text strong {
+      color: var(--maroon);
+      font-style: normal;
+    }
+
+    /* ── Footer ── */
+    .footer {
+      background: linear-gradient(135deg, var(--dark-maroon), var(--maroon));
+      padding: 20px 32px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      animation: fadeUp 0.8s ease 1.5s both;
+    }
+
+    .from-block .from-label {
+      font-family: 'Cinzel', serif;
+      font-size: 0.85rem;
+      letter-spacing: 0.35em;
+      color: rgba(240, 208, 128, 0.6);
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+
+    .from-block .from-names {
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: #f5d87a;
+      line-height: 1.4;
+    }
+
+    .contact-block {
+      text-align: right;
+    }
+
+    .contact-block .phone {
+      font-size: 1.05rem;
+      color: rgba(245, 216, 122, 0.8);
+      line-height: 1.6;
+      font-family: 'Cinzel', serif;
+      letter-spacing: 0.05em;
+    }
+
+    /* ── Bottom ornament ── */
+    .bottom-ornament {
+      background: linear-gradient(90deg, var(--dark-maroon), var(--maroon), var(--dark-maroon));
+      padding: 8px;
+      text-align: center;
+      font-size: 0.85rem;
+      color: var(--gold);
+      letter-spacing: 0.1em;
+    }
+
+    /* ── Thoranam & Malai Decorations ── */
+    .thoranam-wrap {
+      position: relative;
+      width: 100%;
+      line-height: 0;
+      z-index: 2;
+      margin-top: -2px;
+    }
+
+    .thoranam-wrap svg {
+      width: 100%;
+      display: block;
+    }
+
+    .side-malai {
+      position: absolute;
+      top: 0;
+      pointer-events: none;
+      z-index: 4;
+    }
+
+    .side-malai-left {
+      left: -2px;
+    }
+
+    .side-malai-right {
+      right: -2px;
+      transform: scaleX(-1);
+    }
+
+    .petals-canvas {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      overflow: hidden;
+      z-index: 1;
+    }
+
+    .petal {
+      position: absolute;
+      top: -30px;
+      opacity: 0;
+      animation: petalFall linear infinite;
+    }
+
+    @keyframes petalFall {
+      0% {
+        opacity: 0;
+        transform: translateY(0) rotate(0deg) scale(1);
+      }
+
+      10% {
+        opacity: 0.75;
+      }
+
+      90% {
+        opacity: 0.5;
+      }
+
+      100% {
+        opacity: 0;
+        transform: translateY(700px) rotate(400deg) scale(0.7);
+      }
+    }
+
+    @keyframes sway {
+
+      0%,
+      100% {
+        transform: rotate(-1.5deg);
+      }
+
+      50% {
+        transform: rotate(1.5deg);
+      }
+    }
+
+    .leaf-group {
+      transform-origin: 50% 0;
+      animation: sway 3.5s ease-in-out infinite;
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 520px) {
+
+      .hero,
+      .body {
+        padding-left: 22px;
+        padding-right: 22px;
+      }
+
+      .child-name-wrap {
+        margin: 0 -22px;
+        padding: 18px 22px;
+      }
+
+      .info-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .footer {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .contact-block {
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="card">
+
+    <!-- Top band -->
+    <div class="top-band">
+      <div class="blessings-line">ஸ்ரீ சுப்ரமண்யாய நம:</div>
+      <div class="om-symbol">🕉</div>
+      <div class="blessings-line">ஸ்ரீ பிரசன்ன வெங்கட்ரமண பெருமாள் துணை</div>
+    </div>
+
+    <!-- Kolam strip -->
+    <div class="kolam-strip">✾ ✿ ❁ ✾ ✿ ❁ ✾ ✿ ❁ ✾ ✿ ❁ ✾</div>
+
+    <!-- Thoranam garland -->
+    <div class="thoranam-wrap">
+      <svg viewBox="0 0 800 90" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+        <defs>
+          <radialGradient id="leafG" cx="50%" cy="30%" r="60%">
+            <stop offset="0%" stop-color="#6dbf60" />
+            <stop offset="100%" stop-color="#2e7d32" />
+          </radialGradient>
+          <radialGradient id="leafD" cx="50%" cy="30%" r="60%">
+            <stop offset="0%" stop-color="#4CAF50" />
+            <stop offset="100%" stop-color="#1b5e20" />
+          </radialGradient>
+          <radialGradient id="mangoG" cx="50%" cy="30%" r="60%">
+            <stop offset="0%" stop-color="#81c784" />
+            <stop offset="100%" stop-color="#388e3c" />
+          </radialGradient>
+          <radialGradient id="flowerR" cx="50%" cy="50%" r="60%">
+            <stop offset="0%" stop-color="#ff8a65" />
+            <stop offset="100%" stop-color="#d84315" />
+          </radialGradient>
+          <radialGradient id="flowerY" cx="50%" cy="50%" r="60%">
+            <stop offset="0%" stop-color="#fff176" />
+            <stop offset="100%" stop-color="#f9a825" />
+          </radialGradient>
+          <radialGradient id="flowerP" cx="50%" cy="50%" r="60%">
+            <stop offset="0%" stop-color="#f48fb1" />
+            <stop offset="100%" stop-color="#c2185b" />
+          </radialGradient>
+        </defs>
+
+        <!-- Rope / string -->
+        <path d="M0,18 Q100,32 200,18 Q300,6 400,18 Q500,32 600,18 Q700,6 800,18" fill="none" stroke="#8B6914"
+          stroke-width="2.5" opacity="0.8" />
+
+        <!-- Hanging tassels with pot -->
+        <!-- Left pot -->
+        <g transform="translate(30,18)">
+          <ellipse cx="0" cy="0" rx="8" ry="5" fill="#c8a000" opacity="0.9" />
+          <path d="M-6,0 Q-8,14 0,16 Q8,14 6,0Z" fill="#e8b800" />
+          <ellipse cx="0" cy="16" rx="5" ry="3" fill="#c8a000" />
+          <line x1="0" y1="16" x2="-4" y2="28" stroke="#8B6914" stroke-width="1.5" />
+          <line x1="0" y1="16" x2="0" y2="28" stroke="#8B6914" stroke-width="1.5" />
+          <line x1="0" y1="16" x2="4" y2="28" stroke="#8B6914" stroke-width="1.5" />
+          <circle cx="-4" cy="29" r="2.5" fill="#ff6b35" />
+          <circle cx="0" cy="30" r="2.5" fill="#ffd700" />
+          <circle cx="4" cy="29" r="2.5" fill="#ff6b35" />
+        </g>
+        <!-- Right pot -->
+        <g transform="translate(770,18)">
+          <ellipse cx="0" cy="0" rx="8" ry="5" fill="#c8a000" opacity="0.9" />
+          <path d="M-6,0 Q-8,14 0,16 Q8,14 6,0Z" fill="#e8b800" />
+          <ellipse cx="0" cy="16" rx="5" ry="3" fill="#c8a000" />
+          <line x1="0" y1="16" x2="-4" y2="28" stroke="#8B6914" stroke-width="1.5" />
+          <line x1="0" y1="16" x2="0" y2="28" stroke="#8B6914" stroke-width="1.5" />
+          <line x1="0" y1="16" x2="4" y2="28" stroke="#8B6914" stroke-width="1.5" />
+          <circle cx="-4" cy="29" r="2.5" fill="#ff6b35" />
+          <circle cx="0" cy="30" r="2.5" fill="#ffd700" />
+          <circle cx="4" cy="29" r="2.5" fill="#ff6b35" />
+        </g>
+
+        <!-- Mango leaves + flowers repeating pattern -->
+        <!-- Cluster at x=0 -->
+        <g class="leaf-group" transform="translate(0,18)">
+          <ellipse cx="-4" cy="12" rx="5" ry="11" fill="url(#mangoG)" transform="rotate(-25,-4,0)" />
+          <ellipse cx="4" cy="12" rx="5" ry="11" fill="url(#leafG)" transform="rotate(25,4,0)" />
+          <circle cx="0" cy="6" r="5" fill="url(#flowerR)" />
+          <circle cx="0" cy="6" r="2" fill="#fff176" />
+        </g>
+
+        <!-- clusters every ~57px -->
+        <g class="leaf-group" transform="translate(57,14)">
+          <ellipse cx="-4" cy="13" rx="5" ry="12" fill="url(#leafD)" transform="rotate(-20,-4,0)" />
+          <ellipse cx="4" cy="13" rx="5" ry="12" fill="url(#mangoG)" transform="rotate(20,4,0)" />
+          <circle cx="0" cy="7" r="5" fill="url(#flowerY)" />
+          <circle cx="0" cy="7" r="2" fill="#e65100" />
+        </g>
+        <g class="leaf-group" transform="translate(114,20)">
+          <ellipse cx="-4" cy="11" rx="5" ry="10" fill="url(#mangoG)" transform="rotate(-30,-4,0)" />
+          <ellipse cx="4" cy="11" rx="5" ry="10" fill="url(#leafG)" transform="rotate(30,4,0)" />
+          <circle cx="0" cy="5" r="5" fill="url(#flowerP)" />
+          <circle cx="0" cy="5" r="2" fill="#fff176" />
+        </g>
+        <g class="leaf-group" transform="translate(171,13)">
+          <ellipse cx="-5" cy="14" rx="5" ry="13" fill="url(#leafG)" transform="rotate(-15,-5,0)" />
+          <ellipse cx="5" cy="14" rx="5" ry="13" fill="url(#leafD)" transform="rotate(15,5,0)" />
+          <circle cx="0" cy="6" r="6" fill="url(#flowerR)" />
+          <circle cx="0" cy="6" r="2.5" fill="#fff176" />
+        </g>
+        <g class="leaf-group" transform="translate(228,19)">
+          <ellipse cx="-4" cy="12" rx="5" ry="11" fill="url(#mangoG)" transform="rotate(-25,-4,0)" />
+          <ellipse cx="4" cy="12" rx="5" ry="11" fill="url(#leafG)" transform="rotate(25,4,0)" />
+          <circle cx="0" cy="6" r="5" fill="url(#flowerY)" />
+          <circle cx="0" cy="6" r="2" fill="#bf360c" />
+        </g>
+        <g class="leaf-group" transform="translate(285,14)">
+          <ellipse cx="-4" cy="13" rx="5" ry="12" fill="url(#leafD)" transform="rotate(-20,-4,0)" />
+          <ellipse cx="4" cy="13" rx="5" ry="12" fill="url(#mangoG)" transform="rotate(20,4,0)" />
+          <circle cx="0" cy="7" r="5" fill="url(#flowerP)" />
+          <circle cx="0" cy="7" r="2" fill="#fff176" />
+        </g>
+        <!-- Center cluster (bigger) -->
+        <g class="leaf-group" transform="translate(400,10)">
+          <ellipse cx="-7" cy="16" rx="6" ry="15" fill="url(#leafG)" transform="rotate(-30,-7,0)" />
+          <ellipse cx="0" cy="18" rx="6" ry="17" fill="url(#mangoG)" />
+          <ellipse cx="7" cy="16" rx="6" ry="15" fill="url(#leafD)" transform="rotate(30,7,0)" />
+          <circle cx="0" cy="6" r="7" fill="url(#flowerR)" />
+          <circle cx="0" cy="6" r="3" fill="#ffd700" />
+          <!-- Center mango -->
+          <ellipse cx="0" cy="-4" rx="7" ry="10" fill="#a5d6a7" transform="rotate(5,0,-4)" />
+          <circle cx="1" cy="-12" r="2" fill="#5d4037" />
+        </g>
+        <g class="leaf-group" transform="translate(457,14)">
+          <ellipse cx="-4" cy="13" rx="5" ry="12" fill="url(#mangoG)" transform="rotate(-20,-4,0)" />
+          <ellipse cx="4" cy="13" rx="5" ry="12" fill="url(#leafG)" transform="rotate(20,4,0)" />
+          <circle cx="0" cy="7" r="5" fill="url(#flowerY)" />
+          <circle cx="0" cy="7" r="2" fill="#e65100" />
+        </g>
+        <g class="leaf-group" transform="translate(514,20)">
+          <ellipse cx="-4" cy="11" rx="5" ry="10" fill="url(#leafG)" transform="rotate(-30,-4,0)" />
+          <ellipse cx="4" cy="11" rx="5" ry="10" fill="url(#mangoG)" transform="rotate(30,4,0)" />
+          <circle cx="0" cy="5" r="5" fill="url(#flowerR)" />
+          <circle cx="0" cy="5" r="2" fill="#fff176" />
+        </g>
+        <g class="leaf-group" transform="translate(571,13)">
+          <ellipse cx="-5" cy="14" rx="5" ry="13" fill="url(#leafD)" transform="rotate(-15,-5,0)" />
+          <ellipse cx="5" cy="14" rx="5" ry="13" fill="url(#leafG)" transform="rotate(15,5,0)" />
+          <circle cx="0" cy="6" r="6" fill="url(#flowerP)" />
+          <circle cx="0" cy="6" r="2.5" fill="#ffd700" />
+        </g>
+        <g class="leaf-group" transform="translate(628,19)">
+          <ellipse cx="-4" cy="12" rx="5" ry="11" fill="url(#mangoG)" transform="rotate(-25,-4,0)" />
+          <ellipse cx="4" cy="12" rx="5" ry="11" fill="url(#leafG)" transform="rotate(25,4,0)" />
+          <circle cx="0" cy="6" r="5" fill="url(#flowerY)" />
+          <circle cx="0" cy="6" r="2" fill="#bf360c" />
+        </g>
+        <g class="leaf-group" transform="translate(685,14)">
+          <ellipse cx="-4" cy="13" rx="5" ry="12" fill="url(#leafG)" transform="rotate(-20,-4,0)" />
+          <ellipse cx="4" cy="13" rx="5" ry="12" fill="url(#leafD)" transform="rotate(20,4,0)" />
+          <circle cx="0" cy="7" r="5" fill="url(#flowerR)" />
+          <circle cx="0" cy="7" r="2" fill="#fff176" />
+        </g>
+        <g class="leaf-group" transform="translate(742,18)">
+          <ellipse cx="-4" cy="12" rx="5" ry="11" fill="url(#mangoG)" transform="rotate(-25,-4,0)" />
+          <ellipse cx="4" cy="12" rx="5" ry="11" fill="url(#leafG)" transform="rotate(25,4,0)" />
+          <circle cx="0" cy="6" r="5" fill="url(#flowerP)" />
+          <circle cx="0" cy="6" r="2" fill="#ffd700" />
+        </g>
+        <g class="leaf-group" transform="translate(800,18)">
+          <ellipse cx="-4" cy="12" rx="5" ry="11" fill="url(#mangoG)" transform="rotate(-25,-4,0)" />
+          <ellipse cx="4" cy="12" rx="5" ry="11" fill="url(#leafG)" transform="rotate(25,4,0)" />
+          <circle cx="0" cy="6" r="5" fill="url(#flowerR)" />
+          <circle cx="0" cy="6" r="2" fill="#fff176" />
+        </g>
+      </svg>
+    </div>
+
+    <!-- Hero -->
+    <div class="hero" style="position:relative;">
+
+      <!-- Floating petals -->
+      <div class="petals-canvas" id="petalsCanvas"></div>
+
+      <!-- Side malai left — stops above child name block -->
+      <svg class="side-malai side-malai-left" width="52" viewBox="0 0 52 200" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <radialGradient id="mg2" cx="50%" cy="30%" r="60%">
+            <stop offset="0%" stop-color="#81c784" />
+            <stop offset="100%" stop-color="#2e7d32" />
+          </radialGradient>
+        </defs>
+        <line x1="26" y1="0" x2="26" y2="200" stroke="#8B6914" stroke-width="1.5" opacity="0.6" />
+        <g transform="translate(26,30)">
+          <ellipse cx="-9" cy="8" rx="5" ry="13" fill="url(#mg2)" transform="rotate(-40,-9,0)" />
+          <ellipse cx="9" cy="8" rx="5" ry="13" fill="url(#mg2)" transform="rotate(40,9,0)" />
+          <circle cx="0" cy="0" r="6" fill="#ff8a65" />
+          <circle cx="0" cy="0" r="2.5" fill="#ffd700" />
+        </g>
+        <g transform="translate(26,80)">
+          <ellipse cx="-9" cy="8" rx="5" ry="13" fill="url(#mg2)" transform="rotate(-40,-9,0)" />
+          <ellipse cx="9" cy="8" rx="5" ry="13" fill="url(#mg2)" transform="rotate(40,9,0)" />
+          <circle cx="0" cy="0" r="6" fill="#f48fb1" />
+          <circle cx="0" cy="0" r="2.5" fill="#fff176" />
+        </g>
+        <g transform="translate(26,130)">
+          <ellipse cx="-9" cy="8" rx="5" ry="13" fill="url(#mg2)" transform="rotate(-40,-9,0)" />
+          <ellipse cx="9" cy="8" rx="5" ry="13" fill="url(#mg2)" transform="rotate(40,9,0)" />
+          <circle cx="0" cy="0" r="6" fill="#fff176" />
+          <circle cx="0" cy="0" r="2.5" fill="#e65100" />
+        </g>
+        <g transform="translate(26,180)">
+          <ellipse cx="-9" cy="8" rx="5" ry="13" fill="url(#mg2)" transform="rotate(-40,-9,0)" />
+          <ellipse cx="9" cy="8" rx="5" ry="13" fill="url(#mg2)" transform="rotate(40,9,0)" />
+          <circle cx="0" cy="0" r="6" fill="#ff8a65" />
+          <circle cx="0" cy="0" r="2.5" fill="#ffd700" />
+        </g>
+      </svg>
+
+      <!-- Side malai right (mirrored) — stops above child name block -->
+      <svg class="side-malai side-malai-right" width="52" viewBox="0 0 52 200" xmlns="http://www.w3.org/2000/svg">
+        <line x1="26" y1="0" x2="26" y2="200" stroke="#8B6914" stroke-width="1.5" opacity="0.6" />
+        <g transform="translate(26,30)">
+          <ellipse cx="-9" cy="8" rx="5" ry="13" fill="#4CAF50" transform="rotate(-40,-9,0)" />
+          <ellipse cx="9" cy="8" rx="5" ry="13" fill="#2e7d32" transform="rotate(40,9,0)" />
+          <circle cx="0" cy="0" r="6" fill="#ffd700" />
+          <circle cx="0" cy="0" r="2.5" fill="#e65100" />
+        </g>
+        <g transform="translate(26,80)">
+          <ellipse cx="-9" cy="8" rx="5" ry="13" fill="#388e3c" transform="rotate(-40,-9,0)" />
+          <ellipse cx="9" cy="8" rx="5" ry="13" fill="#4CAF50" transform="rotate(40,9,0)" />
+          <circle cx="0" cy="0" r="6" fill="#ff8a65" />
+          <circle cx="0" cy="0" r="2.5" fill="#ffd700" />
+        </g>
+        <g transform="translate(26,130)">
+          <ellipse cx="-9" cy="8" rx="5" ry="13" fill="#4CAF50" transform="rotate(-40,-9,0)" />
+          <ellipse cx="9" cy="8" rx="5" ry="13" fill="#2e7d32" transform="rotate(40,9,0)" />
+          <circle cx="0" cy="0" r="6" fill="#f48fb1" />
+          <circle cx="0" cy="0" r="2.5" fill="#fff176" />
+        </g>
+        <g transform="translate(26,180)">
+          <ellipse cx="-9" cy="8" rx="5" ry="13" fill="#388e3c" transform="rotate(-40,-9,0)" />
+          <ellipse cx="9" cy="8" rx="5" ry="13" fill="#4CAF50" transform="rotate(40,9,0)" />
+          <circle cx="0" cy="0" r="6" fill="#ffd700" />
+          <circle cx="0" cy="0" r="2.5" fill="#bf360c" />
+        </g>
+      </svg>
+      <div class="event-type">சுப நிகழ்ச்சி</div>
+
+      <div class="title-block">
+        <div class="title-main">ஆயுஷ்ய ஹோமம்</div>
+        <div class="title-sub">ஆயுஷ்ய ஹோம சுபமுஹூர்த்த பத்திரிகை</div>
+      </div>
+
+      <div class="invitation-tag">பகவான் கிருபையினால் நடைபெறும் இச்சுப நிகழ்ச்சிக்குத் தாங்கள் வருகை தந்து சிறப்பிக்க
+        அன்புடன்
+        அழைக்கிறோம்</div>
+
+      <div class="divider">✦ ✦ ✦</div>
+
+    </div><!-- end .hero -->
+
+    <!-- Child name block — outside hero, malai stops above here -->
+    <div class="child-name-wrap">
+      <div class="for-label">எங்கள் அன்பு மகனின் ஆயுஷ்ய ஹோமத்திற்கு</div>
+      <div class="child-name">அத்வைத் (எ) கிருஷ்ணவ் சர்மா</div>
+    </div>
+
+    <!-- Body -->
+    <div class="body">
+
+      <!-- Parents -->
+      <div class="parents-block">
+        <div class="parents-label">அன்புடன் அழைக்கும்</div>
+        <div class="parents-names">
+          <span>ஜானகி</span> &amp; <span>சிவராம்</span>
+        </div>
+        <div style="font-size:0.85rem;color:var(--text-medium);margin-top:4px;font-style:italic;">
+          மற்றும் குடும்பத்தினர்
+        </div>
+      </div>
+
+      <!-- Date & Time grid -->
+      <div class="info-grid">
+        <div class="info-card">
+          <span class="icon">🗓️</span>
+          <div class="label">நாள்</div>
+          <div class="value">ஞாயிற்றுக்கிழமை<br>5 ஏப்ரல் 2026</div>
+          <div class="value-sub">பங்குனி <span style="font-size:x-large;">22</span> · விசாகம் நட்சத்திரம்<br>அமிர்த
+            யோகம்· த்ருதியை திதி</div>
+        </div>
+        <div class="info-card">
+          <span class="icon">🪔</span>
+          <div class="label">ஹோமம் ஆரம்பம்</div>
+          <div class="value">காலை 8:00 மணி</div>
+          <div class="value-sub">ரிஷப லக்னம்<br>சுபமுஹூர்த்தம்</div>
+        </div>
+      </div>
+
+      <!-- Muhurtha highlight -->
+      <div class="muhurtha-box">
+        <div class="muhurtha-label">✦ சுப முகூர்த்த நேரம் ✦</div>
+        <div class="muhurtha-time">காலை 9:00 — 10:30 மணி</div>
+        <div class="muhurtha-note">இந்த சுப வேளையில் வருகை தந்து குழந்தையை ஆசீர்வதிக்குமாறு அன்புடன் கேட்டுக்கொள்கிறோம்
+        </div>
+      </div>
+
+      <!-- Venue -->
+      <div class="venue-block">
+        <div class="venue-label">📍 இடம்</div>
+        <div class="venue-name">PSB Main Hall</div>
+        <div class="venue-address">
+          main hall(முதல் தளம்) <br>
+          எண் 586, பள்ளி சாலை, SBOA CBSE பள்ளி அருகில், W பிளாக், அண்ணா நகர் மேற்கு விரிவாக்கம்,<br>
+          சென்னை - 600101
+        </div>
+      </div>
+
+      <!-- Blessings note -->
+      <div class="note-block">
+        <div class="note-text">
+          இந்த சுப நிகழ்ச்சி <strong>ஸ்ரீ காஞ்சி காமகோடி ஜகத்குரு சுவாமிகளின் பரிபூர்ண அனுக்கிரஹத்துடனும்</strong>
+          மற்றும் பெரியோர்களின் ஆசீர்வாதங்களுடனும் நடைபெறுகிறது.
+          உங்கள் வருகையால் நிகழ்ச்சியை சிறப்பித்து, <strong>குழந்தையை ஆசீர்வதிக்குமாறு கேட்டுக்கொள்கிறோம்</strong>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+      <div class="from-block">
+        <div class="from-label">அன்புடன்</div>
+        <div class="from-names">ஜானகி<br>சிவராம்</div>
+      </div>
+      <div class="contact-block">
+        <div class="phone">
+          📞 9080734787<br>
+          📞 9094445707
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom ornament -->
+    <div class="bottom-ornament">✾ &nbsp; ஓம் நமச்சிவாய &nbsp; ✾</div>
+
+  </div>
+
+  <script>
+    // Floating flower petals
+    const canvas = document.getElementById('petalsCanvas');
+    const petals = ['🌸', '🌼', '🌺', '✿', '❀', '🏵️', '🌻'];
+    const colors = ['#ff8a65', '#ffd700', '#f48fb1', '#fff176', '#ffcc02', '#ff6b6b'];
+
+    function createPetal() {
+      const el = document.createElement('span');
+      el.className = 'petal';
+      el.textContent = petals[Math.floor(Math.random() * petals.length)];
+      const size = 0.7 + Math.random() * 0.8;
+      el.style.cssText = `
+      left: ${Math.random() * 100}%;
+      font-size: ${size}rem;
+      animation-duration: ${5 + Math.random() * 7}s;
+      animation-delay: ${Math.random() * 8}s;
+      opacity: 0;
+    `;
+      canvas.appendChild(el);
+      setTimeout(() => el.remove(), 14000);
+    }
+
+    // Spawn petals
+    for (let i = 0; i < 18; i++) setTimeout(createPetal, i * 500);
+    setInterval(createPetal, 900);
+  </script>
+</body>
+
+</html>
