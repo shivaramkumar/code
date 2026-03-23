@@ -56,7 +56,8 @@ app.include_router(mcp_routes.router, prefix="/mcp", tags=["MCP"])
 app.include_router(ai.router, prefix="/api/ai", tags=["AI"])
 
 # Mount frontend
-app.mount("/", StaticFiles(directory="../frontend", html=True), name="frontend")
+frontend_path = os.path.abspath(os.path.join(os.path.dirname(__file__), "../frontend"))
+app.mount("/", StaticFiles(directory=frontend_path, html=True), name="frontend")
 
 # Wrapper for Azure Functions
 # function_app = func.AsgiFunctionApp(app=app, http_auth_level=func.AuthLevel.ANONYMOUS)

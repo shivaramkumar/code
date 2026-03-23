@@ -67,6 +67,25 @@ You can freely register new tools and upload `.txt`/`.pdf` files for different u
 
 ---
 
+## 🐳 Docker Deployment
+
+You can seamlessly package the entire application (both backend and zero-build frontend) into a unified Docker container.
+
+### 1. Build the Image
+To build the image, run the following command at the root of the repository. **Make sure to include the trailing `.`** to specify the current directory as the build context!
+```bash
+docker build -t learnspace-ai .
+```
+
+### 2. Run the Container
+Spin up the container and map port 8000:
+```bash
+docker run -p 8000:8000 learnspace-ai
+```
+The application will be instantly available at `http://localhost:8000`.
+
+---
+
 ## ☁️ Deployment (Azure CI/CD)
 The repository includes an `azure-pipelines.yml`. When merged to `main`, Azure DevOps will:
 1. Spin up an Ubuntu runner.

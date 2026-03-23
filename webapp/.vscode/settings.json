@@ -1,0 +1,10 @@
+{
+    "python.defaultInterpreterPath": "backend/.venv/bin/python3.14",
+    "python.analysis.extraPaths": [
+        "backend/api"
+    ],
+    "terminal.integrated.cwd": "${workspaceFolder}/backend",
+    "terminal.integrated.env.osx": {
+        "PYTHONPATH": "${workspaceFolder}/backend/api"
+    }
+}

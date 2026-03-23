@@ -1,0 +1,15 @@
+# Version control
+.git/
+.gitignore
+
+# Environment and cached files
+.venv/
+__pycache__/
+.ruff_cache/
+.pytest_cache/
+
+# Data and logs
+*.db
+*.log
+chroma_data/
+app.db
