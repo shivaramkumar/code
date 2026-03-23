@@ -28,6 +28,16 @@ class DocumentCache(Base):
     content = Column(Text)
     uploaded_at = Column(DateTime, default=datetime.utcnow)
 
+class MCPTool(Base):
+    __tablename__ = "mcp_tools"
+    
+    id = Column(Integer, primary_key=True, index=True)
+    name = Column(String, unique=True, index=True)
+    description = Column(String)
+    api_endpoint = Column(String, nullable=True) # Optional external webhook for the tool
+    is_active = Column(Integer, default=1) # 1 for True, 0 for False (SQLite boolean)
+    created_at = Column(DateTime, default=datetime.utcnow)
+
 Base.metadata.create_all(bind=engine)
 
 def get_db():

@@ -1,9 +1,0 @@
-fastapi
-uvicorn
-azure-functions
-sqlalchemy
-chromadb
-python-multipart
-httpx
-pydantic-settings
-sse-starlette
