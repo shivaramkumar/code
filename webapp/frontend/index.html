@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nexus Context AI</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar -->
+        <aside class="sidebar glass-panel">
+            <div class="brand">
+                <i class="fa-solid fa-bolt text-gradient"></i>
+                <h2>Nexus AI</h2>
+            </div>
+            
+            <div class="sidebar-section">
+                <h3>Context & Knowledge</h3>
+                <div class="upload-zone" id="upload-zone">
+                    <i class="fa-solid fa-cloud-arrow-up"></i>
+                    <p>Drop files here or click</p>
+                    <input type="file" id="file-input" hidden accept=".txt,.pdf,.csv">
+                </div>
+                <div class="context-list" id="context-list">
+                    <!-- Uploaded docs will appear here -->
+                </div>
+            </div>
+            
+            <div class="sidebar-section">
+                <h3>MCP Actions</h3>
+                <div class="mcp-status">
+                    <span class="status-indicator online"></span>
+                    <span>MCP Server Online</span>
+                </div>
+                <button class="glass-btn btn-sm" id="test-mcp-btn"><i class="fa-solid fa-plug"></i> Test Connection</button>
+            </div>
+        </aside>
+
+        <!-- Main Chat Area -->
+        <main class="chat-area">
+            <header class="chat-header glass-panel">
+                <div class="model-selector">
+                    <span class="badge">Model: Llama3 (Local)</span>
+                </div>
+                <div class="header-actions">
+                    <button class="icon-btn tooltip" data-tooltip="Settings"><i class="fa-solid fa-gear"></i></button>
+                </div>
+            </header>
+            
+            <div class="messages-container" id="messages-container">
+                <!-- Welcome Message -->
+                <div class="message assistant">
+                    <div class="avatar"><i class="fa-solid fa-robot"></i></div>
+                    <div class="message-content">
+                        Hello! I am Nexus. I can chat with you, and use your uploaded context files to answer questions accurately via the Semantic Cache.
+                    </div>
+                </div>
+            </div>
+            
+            <div class="input-area glass-panel">
+                <form id="chat-form">
+                    <div class="input-wrapper">
+                        <textarea id="chat-input" placeholder="Message Nexus (powered by MCP & ChromaDB)..." rows="1"></textarea>
+                        <button type="submit" class="send-btn"><i class="fa-solid fa-paper-plane"></i></button>
+                    </div>
+                    <div class="input-footer">
+                        <label class="toggle-switch">
+                            <input type="checkbox" id="use-context-toggle" checked>
+                            <span class="slider"></span>
+                        </label>
+                        <span class="toggle-label">Use Semantic Context</span>
+                    </div>
+                </form>
+            </div>
+        </main>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>
