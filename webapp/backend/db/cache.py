@@ -1,5 +1,7 @@
-import chromadb
 import os
+import chromadb
+
+os.environ["TOKENIZERS_PARALLELISM"] = "false"
 
 # Initialize ChromaDB client (persistent path)
 CHROMA_PATH = os.path.join(os.getcwd(), "chroma_data")

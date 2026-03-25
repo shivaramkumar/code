@@ -19,7 +19,7 @@ class ToolResponse(BaseModel):
     is_active: int
 
     class Config:
-        orm_mode = True
+        from_attributes = True
 
 @router.get("", response_model=List[ToolResponse])
 def get_tools(db: Session = Depends(get_db)):

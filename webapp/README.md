@@ -86,6 +86,25 @@ The application will be instantly available at `http://localhost:8000`.
 
 ---
 
+## 🐋 Docker Compose (Full Stack)
+
+If you don't have Ollama running locally, the easiest way to spin up the entire stack—the web app alongside the local LLM engine—is using Docker Compose!
+
+Simply run:
+```bash
+docker compose up -d
+```
+Docker Compose will automatically:
+1. Boot the official `ollama/ollama` container.
+2. Build and boot the `learnspace-ai` web container, automatically linking it to Ollama.
+3. Save Ollama models in a persistent volume so they don't get deleted on shutdown.
+
+The application runs at `http://localhost:8000`.
+
+*(Note: Once Ollama boots up for the first time, you must pull a model like `llama3.2:3b`! You can run `docker exec -it <ollama-container-name> ollama run llama3.2:3b`)*
+
+---
+
 ## ☁️ Deployment (Azure CI/CD)
 The repository includes an `azure-pipelines.yml`. When merged to `main`, Azure DevOps will:
 1. Spin up an Ubuntu runner.
