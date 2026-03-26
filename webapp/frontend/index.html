@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nexus Context AI</title>
+    <title id="page-title">Loading Template...</title>
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
@@ -13,15 +13,33 @@
         <!-- Sidebar -->
         <aside class="sidebar glass-panel">
             <div class="brand">
-                <i class="fa-solid fa-bolt text-gradient"></i>
-                <h2>Nexus AI</h2>
+                <i class="fa-solid fa-graduation-cap text-gradient"></i>
+                <h2 id="app-brand-name">App Name</h2>
+            </div>
+            
+            <div class="sidebar-section">
+                <h3>User Identity</h3>
+                <select id="user-profile-select" class="glass-select">
+                    <option value="user_1">User 1 (Admin)</option>
+                    <option value="user_2">User 2 (Guest)</option>
+                </select>
+            </div>
+
+            <div class="sidebar-section">
+                <h3>MCP Tool Scope</h3>
+                <select id="mcp-tool-select" class="glass-select">
+                    <!-- Tools loaded dynamically from REST API -->
+                </select>
+                <button class="glass-btn btn-primary btn-sm mt-2" onclick="openToolsModal()">
+                    <i class="fa-solid fa-plus"></i> Register Tool
+                </button>
             </div>
             
             <div class="sidebar-section">
                 <h3>Context & Knowledge</h3>
                 <div class="upload-zone" id="upload-zone">
                     <i class="fa-solid fa-cloud-arrow-up"></i>
-                    <p>Drop files here or click</p>
+                    <p>Drop to index for <span id="current-scope">User/Tool</span></p>
                     <input type="file" id="file-input" hidden accept=".txt,.pdf,.csv">
                 </div>
                 <div class="context-list" id="context-list">
@@ -30,12 +48,11 @@
             </div>
             
             <div class="sidebar-section">
-                <h3>MCP Actions</h3>
+                <h3>MCP Protocol</h3>
                 <div class="mcp-status">
                     <span class="status-indicator online"></span>
-                    <span>MCP Server Online</span>
+                    <span id="mcp-server-label">MCP Server Loading...</span>
                 </div>
-                <button class="glass-btn btn-sm" id="test-mcp-btn"><i class="fa-solid fa-plug"></i> Test Connection</button>
             </div>
         </aside>
 
@@ -43,9 +60,10 @@
         <main class="chat-area">
             <header class="chat-header glass-panel">
                 <div class="model-selector">
-                    <span class="badge">Model: Llama3 (Local)</span>
+                    <span class="badge" id="model-badge">Model: Loading...</span>
                 </div>
                 <div class="header-actions">
+                    <button class="icon-btn tooltip" onclick="toggleArchitecture()" data-tooltip="Toggle Learning Mode"><i class="fa-solid fa-book-open"></i></button>
                     <button class="icon-btn tooltip" data-tooltip="Settings"><i class="fa-solid fa-gear"></i></button>
                 </div>
             </header>
@@ -54,8 +72,8 @@
                 <!-- Welcome Message -->
                 <div class="message assistant">
                     <div class="avatar"><i class="fa-solid fa-robot"></i></div>
-                    <div class="message-content">
-                        Hello! I am Nexus. I can chat with you, and use your uploaded context files to answer questions accurately via the Semantic Cache.
+                    <div class="message-content" id="welcome-message-text">
+                        Hello! Welcome to the Educational Context AI Template. Try sending a message or uploading a file to watch the backend components process your request in the Architecture Explorer.
                     </div>
                 </div>
             </div>
@@ -63,7 +81,7 @@
             <div class="input-area glass-panel">
                 <form id="chat-form">
                     <div class="input-wrapper">
-                        <textarea id="chat-input" placeholder="Message Nexus (powered by MCP & ChromaDB)..." rows="1"></textarea>
+                        <textarea id="chat-input" placeholder="Message to watch the architecture react..." rows="1"></textarea>
                         <button type="submit" class="send-btn"><i class="fa-solid fa-paper-plane"></i></button>
                     </div>
                     <div class="input-footer">
@@ -71,12 +89,53 @@
                             <input type="checkbox" id="use-context-toggle" checked>
                             <span class="slider"></span>
                         </label>
-                        <span class="toggle-label">Use Semantic Context</span>
+                        <span class="toggle-label">Use Semantic Context (MCP Tools)</span>
                     </div>
                 </form>
             </div>
         </main>
+        
+        <!-- Architecture Explorer (New Educational Panel) -->
+        <aside class="arch-explorer glass-panel" id="arch-explorer">
+            <div class="arch-header">
+                <h3><i class="fa-solid fa-network-wired"></i> Architecture Log</h3>
+                <p>Real-time backend execution trail</p>
+            </div>
+            <div class="timeline" id="event-timeline">
+                <div class="timeline-empty">
+                    <i class="fa-solid fa-eye text-muted"></i>
+                    <p>Waiting for actions...</p>
+                </div>
+            </div>
+        </aside>
     </div>
+
+    <!-- MCP Tools Registry Modal -->
+    <div id="tools-modal" class="modal hidden">
+        <div class="modal-content glass-panel">
+            <div class="modal-header">
+                <h2>Register dynamic MCP Tool</h2>
+                <button class="icon-btn" onclick="closeToolsModal()"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <form id="register-tool-form">
+                <div id="tool-form-feedback" style="display:none; font-size: 0.9rem; padding: 10px; border-radius: 6px; margin-bottom: 12px; text-align: center;"></div>
+                <div class="form-group">
+                    <label>Tool Name (ID)</label>
+                    <input type="text" id="tool-name-input" placeholder="e.g. search_hr_docs" required>
+                </div>
+                <div class="form-group">
+                    <label>Description</label>
+                    <input type="text" id="tool-desc-input" placeholder="Query HR PDFs for User..." required>
+                </div>
+                <div class="form-group" style="margin-bottom: 8px;">
+                    <label>REST Endpoint URL (Optional)</label>
+                    <input type="url" id="tool-url-input" placeholder="e.g. https://api.mycompany.com/webhook">
+                </div>
+                <button type="submit" class="glass-btn btn-primary mt-3" style="padding: 12px; border-radius: 8px; font-size: 1rem;">Register Tool</button>
+            </form>
+        </div>
+    </div>
+
     <script src="app.js"></script>
 </body>
 </html>

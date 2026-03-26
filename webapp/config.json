@@ -1,0 +1,20 @@
+{
+  "app_name": "LearnSpace AI Template",
+  "theme": "dark",
+  "model_provider": "Ollama (Local)",
+  "model_name": "llama3.2:3b",
+  "mcp_server_name": "EduTech MCP Protocol",
+  "learning_mode": true,
+  "mcp_tools": [
+    {
+      "name": "retrieve_context",
+      "description": "Searches ChromaDB semantic cache to fetch relevant uploaded documents for context.",
+      "api_endpoint": "local"
+    },
+    {
+      "name": "analyze_images",
+      "description": "Monitors a specified local directory to automatically extract text from new images and classify semantic completeness. Endpoints: POST /api/image-analysis/watch, GET /api/image-analysis/results.",
+      "api_endpoint": "local"
+    }
+  ]
+}

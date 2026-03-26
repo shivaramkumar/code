@@ -1,0 +1,51 @@
+trigger:
+- main
+
+variables:
+  # Configure these variables in Azure DevOps
+  azureSubscription: 'YourServiceConnectionName'
+  functionAppName: 'LearnSpaceAIApp'
+  pythonVersion: '3.11'
+  
+stages:
+- stage: Build
+  displayName: Build Azure Function App
+  jobs:
+  - job: Build
+    displayName: Build
+    pool:
+      vmImage: 'ubuntu-latest'
+    steps:
+    - task: UsePythonVersion@0
+      displayName: 'Set Python Version'
+      inputs:
+        versionSpec: '$(pythonVersion)'
+        
+    - script: |
+        # Use uv instead of pip for lightning-fast dependency resolution and installation
+        curl -LsSf https://astral.sh/uv/install.sh | sh
+        export PATH="$HOME/.local/bin:$PATH"
+        
+        echo "Installing dependencies using uv..."
+        uv venv myenv
+        source myenv/bin/activate
+        cd backend
+        uv pip install .
+        
+        # Azure Functions Python worker requires requirements.txt during deployment.
+        # Since we use pyproject.toml locally, we let uv compile it into a frozen requirements.txt 
+        # specifically for the Azure artifact package right before zipping.
+        uv pip compile pyproject.toml -o requirements.txt
+      displayName: 'Validate Dependencies with uv'
+      
+    - task: ArchiveFiles@2
+      displayName: 'Archive backend app code'
+      inputs:
+        rootFolderOrFile: '$(System.DefaultWorkingDirectory)/backend'
+        includeRootFolder: false
+        archiveType: zip
+        archiveFile: $(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip
+        replaceExistingArchive: true
+        
+    - publish: $(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip
+      artifact: drop
