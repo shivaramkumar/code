@@ -53,7 +53,10 @@ app.include_router(config.router, prefix="/api/config", tags=["Configuration"])
 app.include_router(tools.router, prefix="/api/tools", tags=["Tools"])
 app.include_router(context.router, prefix="/api/context", tags=["Context"])
 app.include_router(mcp_routes.router, prefix="/mcp", tags=["MCP"])
+from api.routers import context, mcp_routes, ai, config, tools, image_analysis
+...
 app.include_router(ai.router, prefix="/api/ai", tags=["AI"])
+app.include_router(image_analysis.router, prefix="/api/image-analysis", tags=["Image Analysis"])
 
 # Mount frontend
 frontend_path = os.path.abspath(os.path.join(os.path.dirname(__file__), "../frontend"))

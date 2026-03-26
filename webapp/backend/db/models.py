@@ -38,6 +38,16 @@ class MCPTool(Base):
     is_active = Column(Integer, default=1) # 1 for True, 0 for False (SQLite boolean)
     created_at = Column(DateTime, default=datetime.utcnow)
 
+class ProcessedImage(Base):
+    __tablename__ = "processed_images"
+    
+    id = Column(Integer, primary_key=True, index=True)
+    filename = Column(String, index=True)
+    filepath = Column(String, unique=True, index=True)
+    extracted_text = Column(Text, nullable=True)
+    is_complete_meaning = Column(Integer, default=0) # 1 for True, 0 for False
+    processed_at = Column(DateTime, default=datetime.utcnow)
+
 Base.metadata.create_all(bind=engine)
 
 def get_db():

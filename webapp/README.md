@@ -4,11 +4,10 @@ Welcome to the **LearnSpace AI Template**, a modern, educational web application
 
 ## 🚀 Key Features
 
-*   **Dynamic Data Flow Visualization**: The frontend features an "Architecture Explorer" that traces and logs every step the backend takes (Cache Hits, Tool Executions, LLM TTFT) in real-time.
+*   **Advanced Document Parsing Layer**: Support for multi-format context uploads including `.txt`, `.pdf`, `.csv`, and even `.png`/`.jpg` (via Vision OCR).
+*   **Automated Image Analysis Tool**: A specialized service that monitors local directories for new images, extracts text, and classifies semantic completeness using Vision LLMs.
 *   **Multi-Tenant Vector Isolation**: ChromaDB is strictly partitioned by `user_id` and `tool_id`, ensuring completely siloed knowledge graphs for different users and active tools.
-*   **REST-based Tool Registry**: Say goodbye to hardcoded tool lists! The platform hosts a dynamic REST API (`/api/tools`) backed by SQLite to register, list, and assign modular tools on the fly.
-*   **Cloud-Native Serverless**: The backend is powered by **FastAPI** but structurally wrapped to seamlessly deploy directly to **Azure Functions** serverless environments.
-*   **Modern Python Tooling**: Dependencies are blisteringly fast, managed entirely by `uv` using a modern `pyproject.toml`. Code quality is strictly enforced via `pre-commit` hooks (Black, Ruff, PyUpgrade).
+*   **REST-based Tool Registry**: Register, list, and assign modular tools on the fly via the `/api/tools` management API.
 *   **Zero-Build Frontend**: A beautiful glassmorphism vanilla JS/HTML frontend that requires absolutely no `npm build` steps, perfect for instant tinkering.
 
 ---

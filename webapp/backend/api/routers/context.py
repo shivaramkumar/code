@@ -3,6 +3,8 @@ from sqlalchemy.orm import Session
 from db.models import get_db, DocumentCache
 from db.cache import store_context
 
+from api.services.document_parser import extract_from_upload
+
 router = APIRouter()
 
 @router.post("/upload")
@@ -12,9 +14,8 @@ async def upload_document(
     tool_id: str = Form("retrieve_context"),
     db: Session = Depends(get_db)
 ):
-    # Read the content
-    content = await file.read()
-    text = content.decode('utf-8')
+    # Read the content and detect file type automatically
+    text = await extract_from_upload(file)
     
     # Store in metadata DB
     doc = DocumentCache(filename=file.filename, content=text)

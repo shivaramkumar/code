@@ -10,6 +10,11 @@
       "name": "retrieve_context",
       "description": "Searches ChromaDB semantic cache to fetch relevant uploaded documents for context.",
       "api_endpoint": "local"
+    },
+    {
+      "name": "analyze_images",
+      "description": "Monitors a specified local directory to automatically extract text from new images and classify semantic completeness. Endpoints: POST /api/image-analysis/watch, GET /api/image-analysis/results.",
+      "api_endpoint": "local"
     }
   ]
 }
