@@ -1,0 +1,51 @@
+{
+  "name": "actor_instance",
+  "version": "1.0.0",
+  "description": "Definition schema for actor/actuator instances with safety limits and help texts",
+  "file_type": "yaml",
+  "default_filename": "actor_instance.yaml",
+  "parameters": {
+    "instance_name": {
+      "type": "string",
+      "description": "Unique identifier for this actuator instance",
+      "default": "cooling_valve_01",
+      "required": true
+    },
+    "actor_type": {
+      "type": "string",
+      "description": "Physical actuator classification (e.g. pwm_valve, stepper, relay)",
+      "default": "pwm_valve",
+      "required": true
+    },
+    "control_mode": {
+      "type": "string",
+      "description": "Control method (e.g. pwm_duty, position_steps, on_off)",
+      "default": "pwm_duty",
+      "required": true
+    },
+    "max_current_ma": {
+      "type": "integer",
+      "description": "Maximum drive current in milliamperes",
+      "default": 1200,
+      "required": false
+    },
+    "safety_limit": {
+      "type": "number",
+      "description": "Upper safe excursion bound (percentage or engineering unit)",
+      "default": 95.0,
+      "required": false
+    },
+    "pin_channel": {
+      "type": "string",
+      "description": "Hardware control pin or output channel",
+      "default": "PWM_OUT_1",
+      "required": true
+    },
+    "help_text": {
+      "type": "string",
+      "description": "Help text explaining safety restrictions, emergency shutdown, and actuation profile",
+      "default": "Actuates the primary coolant delivery valve. In emergency loss-of-signal events, the valve defaults to 100% open.",
+      "required": true
+    }
+  }
+}

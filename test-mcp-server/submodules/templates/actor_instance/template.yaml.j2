@@ -1,0 +1,20 @@
+# ==========================================================
+# Actor Instance Configuration
+# Schema Version: 1.0.0
+# ==========================================================
+
+instance:
+  id: "{{ instance_name }}"
+  type: "{{ actor_type }}"
+  control_mode: "{{ control_mode }}"
+  # Help text explaining safety guidelines and actuation profile
+  help_text: >-
+    {{ help_text | default('Actuates hardware outputs.') }}
+
+hardware:
+  pin_channel: "{{ pin_channel | default('PWM_OUT_0') }}"
+  max_current_ma: {{ max_current_ma | default(1000) }}
+
+safety:
+  safety_limit: {{ safety_limit | default(90.0) }}
+  failsafe_state: "SAFE_OPEN"

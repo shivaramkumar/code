@@ -1,0 +1,50 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Run MCP Server (streamable-http http://localhost:8000)",
+      "type": "debugpy",
+      "request": "launch",
+      "module": "template_mcp_server.server",
+      "args": [
+        "--transport",
+        "streamable-http",
+        "--host",
+        "localhost",
+        "--port",
+        "8000"
+      ],
+      "cwd": "${workspaceFolder}",
+      "env": {
+        "PYTHONPATH": "${workspaceFolder}/src",
+        "MCP_AUDIT_DIR": "${workspaceFolder}/.mcp_audit"
+      },
+      "console": "integratedTerminal"
+    },
+    {
+      "name": "Run MCP Server (stdio)",
+      "type": "debugpy",
+      "request": "launch",
+      "module": "template_mcp_server.server",
+      "args": ["--transport", "stdio"],
+      "cwd": "${workspaceFolder}",
+      "env": {
+        "PYTHONPATH": "${workspaceFolder}/src",
+        "MCP_AUDIT_DIR": "${workspaceFolder}/.mcp_audit"
+      },
+      "console": "integratedTerminal"
+    },
+    {
+      "name": "Run Pytest Suite",
+      "type": "debugpy",
+      "request": "launch",
+      "module": "pytest",
+      "args": ["tests", "-v"],
+      "cwd": "${workspaceFolder}",
+      "env": {
+        "PYTHONPATH": "${workspaceFolder}/src"
+      },
+      "console": "integratedTerminal"
+    }
+  ]
+}

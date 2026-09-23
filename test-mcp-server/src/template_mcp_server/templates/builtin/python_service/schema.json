@@ -1,0 +1,39 @@
+{
+  "name": "python_service",
+  "version": "1.2.0",
+  "description": "Standard Python microservice module with configuration and health check",
+  "file_type": "python",
+  "default_filename": "service.py",
+  "parameters": {
+    "service_name": {
+      "type": "string",
+      "description": "Name of the microservice",
+      "default": "example_service",
+      "required": true
+    },
+    "version": {
+      "type": "string",
+      "description": "Service version string",
+      "default": "0.1.0",
+      "required": true
+    },
+    "port": {
+      "type": "integer",
+      "description": "Service port",
+      "default": 8000,
+      "required": false
+    },
+    "enable_metrics": {
+      "type": "boolean",
+      "description": "Whether to expose Prometheus metrics",
+      "default": true,
+      "required": false
+    },
+    "author": {
+      "type": "string",
+      "description": "Author or maintainer name",
+      "default": "Team",
+      "required": false
+    }
+  }
+}

@@ -1,0 +1,29 @@
+version: '3.8'
+
+services:
+  app:
+    image: {{ app_image | default('python:3.11-slim') }}
+    container_name: {{ project_name }}-app
+    ports:
+      - "{{ app_port | default(8000) }}:{{ app_port | default(8000) }}"
+    environment:
+      - PROJECT_NAME={{ project_name }}
+      - PORT={{ app_port | default(8000) }}
+{% if include_postgres %}
+      - DATABASE_URL=postgresql://user:password@db:5432/{{ project_name }}
+    depends_on:
+      - db
+
+  db:
+    image: postgres:{{ postgres_version | default('16-alpine') }}
+    container_name: {{ project_name }}-db
+    environment:
+      POSTGRES_DB: {{ project_name }}
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+    volumes:
+      - db-data:/var/lib/postgresql/data
+
+volumes:
+  db-data:
+{% endif %}

@@ -1,0 +1,51 @@
+{
+  "name": "config_yaml",
+  "version": "1.1.0",
+  "description": "Standard application configuration file in YAML format",
+  "file_type": "yaml",
+  "default_filename": "config.yaml",
+  "parameters": {
+    "app_name": {
+      "type": "string",
+      "description": "Name of the application",
+      "default": "my-application",
+      "required": true
+    },
+    "version": {
+      "type": "string",
+      "description": "Application version",
+      "default": "1.0.0",
+      "required": true
+    },
+    "environment": {
+      "type": "string",
+      "description": "Target environment (development, staging, production)",
+      "default": "development",
+      "required": true
+    },
+    "port": {
+      "type": "integer",
+      "description": "HTTP port number",
+      "default": 8080,
+      "required": false
+    },
+    "debug": {
+      "type": "boolean",
+      "description": "Enable debug mode",
+      "default": true,
+      "required": false
+    },
+    "database_url": {
+      "type": "string",
+      "description": "Database connection URL",
+      "default": "sqlite:///app.db",
+      "required": false
+    },
+    "log_level": {
+      "type": "string",
+      "description": "Logging level",
+      "default": "INFO",
+      "required": false
+    }
+  }
+}

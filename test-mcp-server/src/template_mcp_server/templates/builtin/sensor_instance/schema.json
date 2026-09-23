@@ -1,0 +1,57 @@
+{
+  "name": "sensor_instance",
+  "version": "1.0.0",
+  "description": "Definition schema for sensor instances with operating parameters and help texts",
+  "file_type": "yaml",
+  "default_filename": "sensor_instance.yaml",
+  "parameters": {
+    "instance_name": {
+      "type": "string",
+      "description": "Unique identifier for this sensor instance",
+      "default": "temp_sensor_01",
+      "required": true
+    },
+    "sensor_type": {
+      "type": "string",
+      "description": "Physical sensor classification or model",
+      "default": "temperature_pt100",
+      "required": true
+    },
+    "unit": {
+      "type": "string",
+      "description": "Measurement unit",
+      "default": "celsius",
+      "required": true
+    },
+    "sampling_rate_hz": {
+      "type": "integer",
+      "description": "Data acquisition frequency in Hertz",
+      "default": 100,
+      "required": false
+    },
+    "pin_channel": {
+      "type": "string",
+      "description": "Hardware pin, bus address, or channel identifier",
+      "default": "ADC_CH1",
+      "required": true
+    },
+    "calibration_offset": {
+      "type": "number",
+      "description": "Zero-point calibration offset",
+      "default": 0.0,
+      "required": false
+    },
+    "calibration_scale": {
+      "type": "number",
+      "description": "Sensitivity scale factor",
+      "default": 1.0,
+      "required": false
+    },
+    "help_text": {
+      "type": "string",
+      "description": "Help text explaining instance purpose, operating range, and diagnostics",
+      "default": "Monitors internal core operating temperature. Normal operating envelope is 15C to 65C. Triggers warning at 75C and automatic shutdown at 85C.",
+      "required": true
+    }
+  }
+}

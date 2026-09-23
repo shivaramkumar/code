@@ -1,0 +1,33 @@
+{
+  "name": "markdown_doc",
+  "version": "1.0.0",
+  "description": "Standard README and project documentation template",
+  "file_type": "markdown",
+  "default_filename": "README.md",
+  "parameters": {
+    "title": {
+      "type": "string",
+      "description": "Document title",
+      "default": "Project Title",
+      "required": true
+    },
+    "description": {
+      "type": "string",
+      "description": "Brief description of the project",
+      "default": "Project description here.",
+      "required": true
+    },
+    "author": {
+      "type": "string",
+      "description": "Author or team name",
+      "default": "Author Name",
+      "required": false
+    },
+    "license": {
+      "type": "string",
+      "description": "Project license (e.g. MIT, Apache-2.0)",
+      "default": "MIT",
+      "required": false
+    }
+  }
+}

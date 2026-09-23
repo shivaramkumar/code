@@ -1,0 +1,21 @@
+# ==========================================================
+# Sensor Instance Configuration
+# Schema Version: 1.0.0
+# ==========================================================
+
+instance:
+  id: "{{ instance_name }}"
+  type: "{{ sensor_type }}"
+  # Help text explaining instance purpose and diagnostic guidelines
+  help_text: >-
+    {{ help_text | default('Monitors physical sensor data.') }}
+
+hardware:
+  pin_channel: "{{ pin_channel | default('ADC_CH0') }}"
+  sampling_rate_hz: {{ sampling_rate_hz | default(100) }}
+
+measurement:
+  unit: "{{ unit | default('celsius') }}"
+  calibration:
+    offset: {{ calibration_offset | default(0.0) }}
+    scale: {{ calibration_scale | default(1.0) }}
